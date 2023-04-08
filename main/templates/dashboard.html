@@ -1,0 +1,39 @@
+
+
+{% block title %} Dashboard {% endblock %}
+
+{% block content %}
+<div class="container">
+    <div class="row">
+        <div class="col-md-6 offset-md-3">
+            <form action='{% url 'search' %}' method="POST">
+                {% csrf_token %} 
+                <div class="input-group mb-3">
+                    <input type="text" class="form-control" name="name" placeholder="Search products">
+                    <div class="input-group-append">
+                        <button class="btn btn-outline-secondary" type="submit">Search</button>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+
+
+
+    {% for result in results %}
+        <div class="card mb-3">
+            <div class="card-body">
+                <h5 class="card-title">{{result.name}}</h5>
+                <p class="card-text">{{result.description}}</p>
+                <ul class="list-group list-group-flush">
+                    <li class="list-group-item">Store name: {{result.author}}</li>
+                    <li class="list-group-item">Price: {{result.price}}</li>
+                    <li class="list-group-item">Last update: {{result.updated}}</li>
+                    <li class="list-group-item">Availablity: {{result.available}}</li>
+                    <li class="list-group-item">Store Address: {{result.address}}</li>
+                </ul>
+            </div>
+        </div>
+    {% endfor %}
+</div>
+{% endblock content %}

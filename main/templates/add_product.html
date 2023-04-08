@@ -1,0 +1,36 @@
+{% extends 'base.html' %}
+
+{% block content %}
+  <h1 class="text-center mb-4">Add Product</h1>
+  <div class="container">
+    <div class="row justify-content-center">
+      <div class="col-md-6">
+        <form method="POST">
+          {% csrf_token %}
+          <div class="form-group">
+            <label for="{{ form.name.id_for_label }}">Product Name</label>
+            {{ form.name }}
+          </div>
+          <div class="form-group">
+            <label for="{{ form.description.id_for_label }}">Description</label>
+            {{ form.description }}
+          </div>
+          <div c<l>ass="form-group">
+            <label for="{{ form.price.id_for_label }}">Price</label>
+            {{ form.price }}
+          </div>
+          <div class="form-group">
+            <label for="{{ form.available.id_for_label }}">Available</label>
+            {{ form.available }}
+          </div>
+          <div class="form-group">
+            <label for="{{ form.address.id_for_label }}">Address</label>
+            {{ form.address }}
+          </div>
+          <button type="submit" class="btn btn-primary">Save</button>
+          <a href="{% url 'homepage' %}" class="btn btn-secondary">Cancel</a>
+        </form>
+      </div>
+    </div>
+  </div>
+{% endblock %} 
